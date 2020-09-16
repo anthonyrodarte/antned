@@ -1,4 +1,5 @@
 import React from 'react';
+import { Counter } from './components/counter'
 import './App.css';
 
 function App() {
@@ -10,7 +11,9 @@ function App() {
           BAGUL
         </h1>
       </header>
+      <Counter />
     </div>
+    
   );
 }
 
