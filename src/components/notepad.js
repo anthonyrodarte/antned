@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export function Notepad() {
   const [noteText, changeText] = useState('');
@@ -8,9 +8,13 @@ export function Notepad() {
     <li key={i} >{note}</li>
     );
 
-  function handleSubmit(e) {
-    addNote(notes[0] = [noteText, ...notes])
+  function handleSubmit() {
+    if (noteText) {
+      addNote(notes[0] = [noteText, ...notes])
     changeText('')
+    } else {
+      alert('Write a note first dummy')
+    }
   };
 
   return (
