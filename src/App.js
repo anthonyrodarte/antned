@@ -1,5 +1,6 @@
 import React from 'react';
 import { Counter } from './components/counter'
+import { Notepad } from './components/notepad'
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         </h1>
       </header>
       <Counter />
+      <Notepad />
     </div>
     
   );
