@@ -10,6 +10,7 @@ export function Notepad() {
 
   function handleSubmit(e) {
     addNote(notes[0] = [noteText, ...notes])
+    changeText('')
   };
 
   return (
