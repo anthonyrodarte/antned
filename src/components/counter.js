@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
-export function Counter() {
-  const [count, setCount] = useState(0);
+const Counter = () => {
+    const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    document.title = `You clicked ${count} times`;
-  });
+    useEffect(() => {
+        document.title = `You clicked ${count} times`;
+    }, [count]);
 
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
+    const handleClick = () => setCount(count + 1);
+
+    return (
+        <div>
+            <p>You clicked {count} times</p>
+            <button onClick={handleClick}>
+                Click me
+            </button>
+        </div>
+    );
 }
+
+export default Counter;

@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
 
-export function Notepad() {
+import Notes from './Notes';
+
+const Notepad = () => {
   const [noteText, changeText] = useState('');
   const [notes, addNote] = useState([]);
 
-  const notesList = notes.map((note, i) => 
-    <li key={i} >{note}</li>
-    );
-
-  function handleSubmit() {
+  const handleSubmit = () => {
     if (noteText) {
       addNote(notes[0] = [noteText, ...notes])
-    changeText('')
+      changeText('')
     } else {
       alert('Write a note first dummy')
     }
   };
 
+  const handleChange = ({ target: { value } }) => changeText(value);
+  const handleKeyPress = ({ key }) => {
+    if (key === 'Enter') handleSubmit()
+  }
+
   return (
-      <div>
-        <ul>{notesList}</ul>
-        <label>Write some notes</label>
-        <br />
-        <input value={noteText} onChange={(e) => changeText(e.target.value)}/>
-        <button onClick={() => {handleSubmit()}}>Submit Note</button>
-      </div>
+    <div>
+      <label>Write some notes</label>
+      <br />
+      <input value={noteText} onChange={handleChange} onKeyPress={handleKeyPress} />
+      <button onClick={handleSubmit}>Submit Note</button>
+      <Notes notes={notes} />
+    </div>
   );
 }
+
+export default Notepad;
