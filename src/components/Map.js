@@ -90,4 +90,61 @@ class OLMap extends React.Component {
         )
     }
 }
+
+// const OLMap = () => {
+//   const h = window.innerWidth >= 992 ? window.innerHeight : 400
+//   const [height, setHeight] = useState(h)
+
+//   const updateDimensions = () => {
+//         const newHeight = window.innerWidth >= 992 ? window.innerHeight : 400
+//         setHeight(newHeight)
+//     }
+
+//   useEffect(() => {
+//       const map = new Map({
+//           target: 'map',
+//           layers: [
+//               new TileLayer({
+//                   source: new XYZSource({
+//                       url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+//                       projection: 'EPSG:3857'
+//                   })
+//               }),
+//               new TileLayer({
+//                   source: new TileWMSSource({
+//                       url: 'https://ahocevar.com/geoserver/wms',
+//                       params: {
+//                           layers: 'topp:states',
+//                           'TILED': true,
+//                       },
+//                       projection: 'EPSG:4326'
+//                   }),
+//                   name: 'USA'
+//               }),
+//           ],
+//           controls: DefaultControls().extend([
+//               new ZoomSlider(),
+//               new MousePosition(),
+//               new ScaleLine(),
+//               new OverviewMap()
+//           ]),
+//           view: new View({
+//               projection: 'EPSG:3857',
+//               center: [0, 0],
+//               zoom: 2
+//           })
+//       })
+//   })
+  
+//   const style = {
+//     width: '100%',
+//     height:this.state.height,
+//     backgroundColor: '#cccccc',
+//   }
+
+//   return (
+//     <div id='map' style={style}></div>
+//   )
+// }
+
 export default OLMap
