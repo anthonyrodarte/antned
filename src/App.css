@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.styles_simpleReactWeatherTemp__2PnUn, .styles_simpleReactWeatherCityIcon__wxZcO {
+    color: #000000 !important;
+}
 
 .App-logo {
   border-radius: 75px;

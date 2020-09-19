@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import Counter from './components/Counter'
 import Notepad from './components/Notepad'
+import Forecast from './components/Forecast'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <Counter />
       <Notepad />
+      <Forecast />
     </div>
 
   );
