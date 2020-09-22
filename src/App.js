@@ -20,7 +20,7 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/bagul">bagul</Link>
           </li>
           <li>
             <Link to="/counter">Counter</Link>
@@ -40,9 +40,6 @@ function App() {
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
       <Switch>
-        <Route path="/">
-            <Header />
-        </Route>
         <Route path="/counter">
           <Counter />
         </Route>
@@ -54,6 +51,12 @@ function App() {
         </Route>
         <Route path="/map">
           <OLMap />
+        </Route>
+        <Route path="/bagul">
+            <Header />
+        </Route>
+        <Route path="/">
+          <Header />
         </Route>
       </Switch>
     </div>
