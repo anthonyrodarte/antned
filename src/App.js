@@ -20,9 +20,6 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/bagul">bagul</Link>
-          </li>
-          <li>
             <Link to="/counter">Counter</Link>
           </li>
           <li>
@@ -33,6 +30,9 @@ function App() {
           </li>
           <li>
             <Link to="/map">Map</Link>
+          </li>
+          <li>
+            <Link to="/bagul">bagul</Link>
           </li>
         </ul>
       </nav>
