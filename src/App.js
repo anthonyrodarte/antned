@@ -8,6 +8,7 @@ import {
 
 import './App.css';
 import Header from './components/Header';
+import Beyblade from './components/Beyblade';
 import Counter from './components/Counter';
 import Notepad from './components/Notepad';
 import Forecast from './components/Forecast';
@@ -19,6 +20,9 @@ function App() {
     <div className="App">
       <nav>
         <ul>
+          <li>
+            <Link to="/Beyblade">Beyblade</Link>
+          </li>
           <li>
             <Link to="/counter">Counter</Link>
           </li>
@@ -40,6 +44,9 @@ function App() {
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
       <Switch>
+        <Route path="/Beyblade">
+          <Beyblade />
+        </Route>
         <Route path="/counter">
           <Counter />
         </Route>

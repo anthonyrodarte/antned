@@ -40,3 +40,45 @@
     transform: rotate(360deg);
   }
 }
+
+.Beyblade {
+  border-radius: 75px;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Beyblade {
+    animation: Beyblade-spin infinite 1s linear;
+  }
+}
+
+@keyframes Beyblade-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Beyblade2 {
+  border-radius: 75px;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Beyblade2 {
+    animation: Beyblade-spin infinite .2s linear;
+  }
+}
+
+@keyframes Beyblade2-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
