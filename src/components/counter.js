@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, selectCount } from './counterSlice.js';
 
 const Counter = () => {
-    const [count, setCount] = useState(0);
+    const count = useSelector(selectCount);
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-        document.title = `You clicked ${count} times`;
-    }, [count]);
-
-    const handleClick = () => setCount(count + 1);
+    // useEffect(() => {
+    //     document.title = `You clicked ${count} times`;
+    // }, [count]);
 
     return (
         <div>
             <p>You clicked {count} times</p>
-            <button onClick={handleClick}>
+            <button onClick={() => dispatch(increment())}>
                 Click me
             </button>
         </div>
