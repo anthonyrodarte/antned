@@ -11,7 +11,7 @@ const Notepad = () => {
       addNote(notes[0] = [noteText, ...notes])
       changeText('')
     } else {
-      alert('Write a note first dummy')
+      alert('Write a note first silly.')
     }
   };
 

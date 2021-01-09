@@ -12,12 +12,13 @@ import Counter from './components/Counter';
 import Notepad from './components/Notepad';
 import Forecast from './components/Forecast';
 import OLMap from './components/Map';
+import Quiz from './components/Quiz';
 
 function App() {
   return (
     <Router>
     <div className="App">
-      <nav>
+      <nav className="header-nav">
         <ul>
           <li>
             <Link to="/counter">Counter</Link>
@@ -32,7 +33,10 @@ function App() {
             <Link to="/map">Map</Link>
           </li>
           <li>
-            <Link to="/bagul">bagul</Link>
+            <Link to="/bagul">Bagul</Link>
+          </li>
+          <li>
+            <Link to="/quiz">Cocktail Quiz</Link>
           </li>
         </ul>
       </nav>
@@ -54,6 +58,9 @@ function App() {
         </Route>
         <Route path="/bagul">
             <Header />
+        </Route>
+        <Route path="/quiz">
+            <Quiz />
         </Route>
         <Route path="/">
           <Header />
