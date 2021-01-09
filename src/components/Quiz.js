@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Cocktails from './Cocktails'
 
+// shuffle
+
 const Quiz = () => {
 
-  console.log(Cocktails)
+  const [cocktailList, changeCocktailList] = useState(Cocktails)
+
+
+  const {name: cocktailName, recipe: cocktailRecipe} = cocktailList[0]
+
+  const updateCocktailList  = () => {
+    const [first, ...rest] = cocktailList
+
+    changeCocktailList([...rest, first])
+  }
 
   return (
-    <span>Cocktails coming soon</span>
+    <div>
+      <span>{cocktailName}</span>
+
+      <ul>
+        {cocktailRecipe.map((ingredient, idx) => (
+        <li key={idx}>{ingredient}</li>
+      ))}
+      </ul>
+
+      <button onClick={updateCocktailList}>Change Cocktail</button>
+    </div>
   )
 }
 
