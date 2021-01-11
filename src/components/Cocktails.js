@@ -1,7 +1,7 @@
 const Cocktails = [
   {
     name: 'Old Fashioned',
-    recipe: ['1 sugar cube', '3 dashes bitters', '2 oz rye']
+    recipe: ['1 cube sugar', '3 dashes bitters', '2 oz rye']
   },
   {
     name: 'Daquiri',
