@@ -8,9 +8,16 @@ const Quiz = () => {
 
   const [cocktailList, changeCocktailList] = useState(shuffle(Cocktails))
   const [ingredientInputs, changeIngredientInput] = useState([{quantity: '', measurement: '', ingredient: ''}])
+  const [quizScore, updateQuizScore] = useState({score: 0, incorrectList: []})
 
+  let cocktailName
+  let cocktailRecipe
 
-  const {name: cocktailName, recipe: cocktailRecipe} = first(cocktailList)
+  if (cocktailList.length >= 1) {
+    const { name, recipe } = first(cocktailList)
+    cocktailName = name
+    cocktailRecipe = recipe
+  }
 
   const updateCocktailList  = () => {
     changeCocktailList(drop(cocktailList))
@@ -27,7 +34,16 @@ const Quiz = () => {
       recipeStrings.push(recipeString)
     })
 
-    console.log(intersection(recipeStrings, cocktailRecipe).length === cocktailRecipe.length)
+    const recipeVerdict = intersection(recipeStrings, cocktailRecipe).length === cocktailRecipe.length
+
+    console.log('recipeV', recipeVerdict);
+
+    if (recipeVerdict === true ) {
+      updateQuizScore({score: quizScore.score + 1, incorrectList: quizScore.incorrectList})
+    } else {
+      updateQuizScore({score: quizScore.score, incorrectList: quizScore.incorrectList.push({name: cocktailName, recipe: cocktailRecipe})})
+    }
+
     updateCocktailList()
   }
 
@@ -62,7 +78,7 @@ const Quiz = () => {
     changeIngredientInput(inputs)
   }
   
-  console.log('checkstate', ingredientInputs)
+  console.log("checkState", quizScore);
   return (
     <div>
       <p>{cocktailName}</p>
