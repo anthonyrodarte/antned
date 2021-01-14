@@ -20,7 +20,9 @@ const Quiz = () => {
   }
 
   const updateCocktailList  = () => {
-    changeCocktailList(drop(cocktailList))
+
+    const newCocktailList = drop(cocktailList)
+    changeCocktailList(newCocktailList)
     changeIngredientInput([{quantity: '', measurement: '', ingredient: ''}])
   }
 
@@ -31,17 +33,18 @@ const Quiz = () => {
     ingredientInputs.map((recipe) => {
       const {quantity, measurement, ingredient} = recipe
       const recipeString = quantity + ' ' + measurement + ' ' + ingredient
-      recipeStrings.push(recipeString)
+      return recipeStrings.push(recipeString)
     })
 
     const recipeVerdict = intersection(recipeStrings, cocktailRecipe).length === cocktailRecipe.length
 
-    console.log('recipeV', recipeVerdict);
+    const { score, incorrectList } = quizScore
 
     if (recipeVerdict === true ) {
-      updateQuizScore({score: quizScore.score + 1, incorrectList: quizScore.incorrectList})
+      updateQuizScore({score: score + 1, incorrectList: quizScore.incorrectList})
     } else {
-      updateQuizScore({score: quizScore.score, incorrectList: quizScore.incorrectList.push({name: cocktailName, recipe: cocktailRecipe})})
+      incorrectList.push({cocktailName, cocktailRecipe })
+      updateQuizScore({score: score, incorrectList: incorrectList})
     }
 
     updateCocktailList()
@@ -78,33 +81,58 @@ const Quiz = () => {
     changeIngredientInput(inputs)
   }
   
-  console.log("checkState", quizScore);
+  const { score } = quizScore;
+
+  const renderControls = () => {
+    
+    if (cocktailName) {
+      return (
+        <form>
+          <label>Ingredient List
+          <br />
+          {ingredientInputs.map((ingredients, idx) => (
+            <div key={idx} >
+              <input data-index={idx} data-type='quantity' placeholder="quantity" onChange={updateInputValues} value={ingredients.quantity}/>
+              <select data-index={idx} data-type='measurement' onChange={updateInputValues} value={ingredients.measurement}>
+                <option value="" disabled></option>
+                <option value="oz">oz</option>
+                <option value="dashes">dashe(s)</option>
+                <option value="cube">cube</option>
+              </select>
+              <input data-index={idx} data-type='ingredient' placeholder="ingredient" onChange={updateInputValues} value={ingredients.ingredient}/>
+            </div>
+          ))}
+          <br />
+          <button onClick={addIngredientInput}>+</button>
+          <br />
+          <button onClick={validateIngredients}>Submit</button>
+          </label>
+        </form>
+      )
+    } else {
+
+      const { incorrectList } = quizScore
+      return (
+        <div>
+          <p>Incorrect Answers</p>
+          {incorrectList.map((cocktail, idx) => (
+            <div key={idx} >
+              <p>Cocktail: {cocktail.cocktailName}</p>
+              <p>Correct Recipe: {cocktail.cocktailRecipe}</p>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+  }
+
   return (
     <div>
+      <p>Current Score</p>
+      <p>{score}</p>
       <p>{cocktailName}</p>
-      <form>
-        <label>Ingredient List
-        <br />
-        {ingredientInputs.map((ingredients, idx) => (
-          <div key={idx} >
-            <input data-index={idx} data-type='quantity' placeholder="quantity" onChange={updateInputValues} value={ingredients.quantity}/>
-            <select data-index={idx} data-type='measurement' onChange={updateInputValues} value={ingredients.measurement}>
-              <option value="" disabled></option>
-              <option value="oz">oz</option>
-              <option value="dashes">dashe(s)</option>
-              <option value="cube">cube</option>
-            </select>
-            <input data-index={idx} data-type='ingredient' placeholder="ingredient" onChange={updateInputValues} value={ingredients.ingredient}/>
-          </div>
-        ))}
-        <br />
-        <button onClick={addIngredientInput}>+</button>
-        <br />
-        <button onClick={validateIngredients}>Submit</button>
-        </label>
-      </form>
-
-      
+      {renderControls()}
     </div>
   )
 }
