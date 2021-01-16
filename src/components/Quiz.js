@@ -33,7 +33,7 @@ const Quiz = () => {
     ingredientInputs.map((recipe) => {
       const {quantity, measurement, ingredient} = recipe
       const recipeString = quantity + ' ' + measurement + ' ' + ingredient
-      return recipeStrings.push(recipeString)
+      return recipeStrings.push(recipeString.toLowerCase())
     })
 
     const recipeVerdict = intersection(recipeStrings, cocktailRecipe).length === cocktailRecipe.length
@@ -105,7 +105,7 @@ const Quiz = () => {
           <br />
           <button onClick={addIngredientInput}>+</button>
           <br />
-          <button onClick={validateIngredients}>Submit</button>
+          <button className="quiz-submit" onClick={validateIngredients}>Submit</button>
           </label>
         </form>
       )
@@ -118,7 +118,7 @@ const Quiz = () => {
           {incorrectList.map((cocktail, idx) => (
             <div key={idx} >
               <p>Cocktail: {cocktail.cocktailName}</p>
-              <p>Correct Recipe: {cocktail.cocktailRecipe}</p>
+              <p>Correct Recipe: {cocktail.cocktailRecipe.join(', ')}</p>
             </div>
           ))}
         </div>
@@ -128,10 +128,13 @@ const Quiz = () => {
   }
 
   return (
-    <div>
-      <p>Current Score</p>
-      <p>{score}</p>
-      <p>{cocktailName}</p>
+    <div className="quiz">
+      <header>Cocktail Quiz</header>
+      <p>Current Score: {score}</p>
+      <p>
+        <span className="cocktail-name">{cocktailName}</span>
+      </p>
+      <img src="https://horizonlives3.s3.amazonaws.com/PR1517/Haig_Coffee_Negroni.png" className="cocktail-image" alt="cocktail"/>
       {renderControls()}
     </div>
   )
