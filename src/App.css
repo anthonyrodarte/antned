@@ -50,6 +50,7 @@
 
 .header-nav > ul {
   list-style-type: none;
+  padding-left: 0;
 }
 
 .header-nav li {
@@ -95,4 +96,21 @@
   font-size: 35px;
   font-weight: 800;
   color: #E8998D;
+}
+
+.inc-title {
+  font-size: 1.5rem;
+  color: #e8998d;
+  text-decoration: underline;
+  margin-bottom: 0;
+}
+
+.inc-recipe {
+  font-size: 1rem;
+  margin-top: 0;
+  letter-spacing: 1px;
+}
+
+.inc-cocktail-name {
+  margin-bottom: 5px;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { first, shuffle, drop, intersection} from 'lodash'
 
@@ -20,7 +20,6 @@ const Quiz = () => {
   }
 
   const updateCocktailList  = () => {
-
     const newCocktailList = drop(cocktailList)
     changeCocktailList(newCocktailList)
     changeIngredientInput([{quantity: '', measurement: '', ingredient: ''}])
@@ -114,26 +113,33 @@ const Quiz = () => {
       const { incorrectList } = quizScore
       return (
         <div>
-          <p>Incorrect Answers</p>
+          <p className="inc-title">Incorrect Answers</p>
           {incorrectList.map((cocktail, idx) => (
             <div key={idx} >
-              <p>Cocktail: {cocktail.cocktailName}</p>
-              <p>Correct Recipe: {cocktail.cocktailRecipe.join(', ')}</p>
+              <p className="inc-cocktail-name">Cocktail: {cocktail.cocktailName}</p>
+              <p className="inc-recipe">Correct Recipe: {cocktail.cocktailRecipe.join(', ')}</p>
             </div>
           ))}
         </div>
       )
     }
+  }
 
+  const renderCocktailName = () => {
+    if (cocktailName) {
+      return (
+        <p>
+          <span className="cocktail-name">{cocktailName}</span>
+        </p>
+      )
+    }
   }
 
   return (
     <div className="quiz">
       <header>Cocktail Quiz</header>
-      <p>Current Score: {score}</p>
-      <p>
-        <span className="cocktail-name">{cocktailName}</span>
-      </p>
+      <p>Score: {score}</p>
+      {renderCocktailName()}
       <img src="https://horizonlives3.s3.amazonaws.com/PR1517/Haig_Coffee_Negroni.png" className="cocktail-image" alt="cocktail"/>
       {renderControls()}
     </div>
