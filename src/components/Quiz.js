@@ -138,7 +138,7 @@ const Quiz = () => {
   return (
     <div className="quiz">
       <header>Cocktail Quiz</header>
-      <p>Score: {score}</p>
+      <p>Score: <span className="fade-in">{score}</span></p>
       {renderCocktailName()}
       <img src="https://horizonlives3.s3.amazonaws.com/PR1517/Haig_Coffee_Negroni.png" className="cocktail-image" alt="cocktail"/>
       {renderControls()}
