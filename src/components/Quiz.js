@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { first, shuffle, drop, intersection} from 'lodash'
 
 import Cocktails from './Cocktails'
